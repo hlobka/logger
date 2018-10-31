@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" >
+<html>
+<head>
+    <title> HTML Log File </title>
+    <link type="image/x-icon" rel="icon" href="icons/icon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/main_js.js"></script>
+    <script type="text/javascript" src="js/super_box.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script type="text/javascript">
+
+        $(function () {
+            $.superbox.settings = {
+                closeTxt: "Close",
+                loadTxt: "Loading...",
+                nextTxt: "Next",
+                prevTxt: "Previous"
+            };
+            $('#btnShowErrorList').click(showErrorList);
+            $('#btnShowAllErrors').click(showAllErrors);
+            $('#btnOpenAllErrors').click(openAllErrors);
+            $('#btnShowAll').click(showAll);
+            $('#btnDebugInfo').click(showDebugInfo);
+            $('#btnShowInfo').click(showInfo);
+            $('#btnMoveOnTop').click(moveOnTop);
+            reCollectItems();
+            draw();
+            var hash = window.location.hash;
+            update();
+            openHash(hash);
+            $.superbox();
+            document.title = suiteName;
+        });
+    </script>
+</head>
+<body style="font-family:Sans-Serif,Arial,serif;">
+<div id="result" style="width:150px; display:none; float:left; " class="none">
+    <u>
+    </u>
+</div>
+<div id="menu" class="none">
+    <div id="btnShowAll" class="tab">show all</div>
+    <div id="btnShowAllErrors" class="tab">show errors</div>
+    <div id="btnOpenAllErrors" class="tab">open errors</div>
+    <div id="btnShowErrorList" class="tab">show error list</div>
+    <div id="btnDebugInfo" class="tab">show debug information</div>
+    <div id="btnShowInfo" class="tab">show info blocks</div>
+    <div id="btnMoveOnTop" class="tab">move on top</div>
+</div>
+<div id="table" class="none">
+    <table width="100%" border="1" cellspacing="0" cellpadding="4">
+        <thead>
+        <tr>
+            <th style="width: 30px; min-width: 30px; cursor:default;">
+                <b>#</b>
+            </th>
+            <th style="width: 300px; min-width: 300px; cursor:default;">
+                <b>Action:</b>
+            </th>
+            <th style="cursor:default;">
+                <b>Description:</b>
+            </th>
+            <th style="width: 30px; min-width: 200px; cursor:default;">
+                <b>ScreenShot:</b>
+            </th>
+        </tr>
+        </thead>
+    </table>
+</div>
+</body>

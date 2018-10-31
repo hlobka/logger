@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" >
+<html>
+	<head>
+		<title> HTML Log File </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/data.js"></script>
+		<script>
+
+			var itemsDict = {};
+			var isDebugMode = false;
+			var isFailed = false;
+			var isInfo = false;
+			function getRowIndex(rowName) {
+				for(var i=0; i<=$("tr").length; i++){
+					if($("tr:nth-child("+i+") td."+rowName).length!=0){
+						return i;
+					}
+				}
+				return -1;
+			}
+			function reCollectItems() {
+                $('#table').removeClass('datagrid_red');
+                $('#table').addClass('datagrid_green');
+                var $table = $("#table table thead");
+                $table.append("<th> environment </th>");
+
+				for(var testName in items) {
+					$table.append("<th>" + testName + "</th>");
+                    if(!items.hasOwnProperty(testName)){
+                        continue;
+                    }
+                    var testResults = items[testName];
+                    for(var environmet in testResults) {
+							if($("td."+environmet).length==0) {
+								$("#table table ").append("<tr><td class='" + environmet + "'>" + environmet + "</td></tr>");
+							}
+                            var testResultForStage = testResults[environmet];
+                            var indexX = $( "th" ).index( $("th:contains('"+testName+"')") );
+                            console.log(testName + " " + indexX);
+                            var indexY = getRowIndex(environmet);
+                            console.log(environmet + " " + indexY);
+                            var isSuccess = testResultForStage.status;
+                            var tdClass = isSuccess ? "green" : "red";
+                            $("tr:nth-child("+indexY+")").append("<td class='" + tdClass+"' title='"+testResultForStage.description+"'>" + isSuccess +
+									"</td>>");
+                            console.log(testResultForStage);
+						}
+
+				}
+			}
+
+			$(function(){
+				reCollectItems();
+			});
+		</script>
+		<style type="text/css" media="screen">
+			.datagrid_green table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid_green {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #36752D; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }.datagrid_green table td, .datagrid_green table th { padding: 3px 10px; }.datagrid_green table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420) );background:-moz-linear-gradient( center top, #36752D 5%, #275420 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');background-color:#36752D; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 3px solid #36752D; border-bottom: 1px solid #000000; } .datagrid_green table thead th:first-child { border: none; }.datagrid_green table tbody td { color: #000; border-left: 3px solid #249C0C;font-size: 12px;font-weight: normal; }
+			.datagrid_green table tbody .error 	td { background: #80141C; color: #F8E1E2; } .datagrid_green table tbody .warning 	td { background: #FFEBC8; color: #FFA200; }.datagrid_green table tbody .log 		td { background: #edffef; color: #275420; }.datagrid_green table tbody .debug 	td { background: #CECECE; color: #000000; }
+			.datagrid_green table tbody td:first-child { border-left: none; }.datagrid_green table tbody tr:last-child td { border-bottom: none; }.datagrid_green table tfoot td div { border-top: 1px solid #36752D;background: #DFFFDE;} .datagrid_green table tfoot td { padding: 0; font-size: 12px } .datagrid_green table tfoot td div{ padding: 2px; }.datagrid_green table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }.datagrid_green table tfoot  li { display: inline; }.datagrid_green table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 1px solid #36752D;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420) );background:-moz-linear-gradient( center top, #36752D 5%, #275420 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');background-color:#36752D; }.datagrid_green table tfoot ul.active, .datagrid_green table tfoot ul a:hover { text-decoration: none;border-color: #275420; color: #FFFFFF; background: none; background-color:#36752D;}
+            .datagrid_green table tbody td.red{background: #FFDFDF;}
+			a { font-family: arial, 'times new roman', sans-serif; font-size: 2em; font-weight: bold; color: #103711; text-decoration: none; }
+			#table{margin-top:20px;}
+
+
+		</style>
+</head>
+<body style="font-family:Sans-Serif,Arial;">
+	<div id="result" style="width:150px; display:none; float:left; " class="none">
+		<u>
+		</u>
+	</div>
+	<div id="table" class="none">
+		<table width="100%" border="1" cellspacing="0" cellpadding="4">
+			<thead>
+
+			</thead>
+		</table>
+	</div>
+</body>

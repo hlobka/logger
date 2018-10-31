@@ -1,0 +1,577 @@
+#superbox-overlay {
+    background: #e0e4cc;
+}
+
+#superbox-container .loading {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    text-indent: -9999px;
+}
+
+#superbox .close a {
+    float: right;
+    padding: 0 150px;
+    line-height: 20px;
+    background: #333;
+    cursor: pointer;
+}
+
+#superbox .close a span {
+    color: #fff;
+}
+
+#superbox .nextprev a {
+    float: left;
+    margin-right: 5px;
+    padding: 0 5px;
+    line-height: 20px;
+    background: #333;
+    cursor: pointer;
+    color: #fff;
+}
+
+#superbox .nextprev .disabled {
+    background: #ccc;
+    cursor: default;
+}
+
+/* Base Superbox Styles */
+#superbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+}
+
+#superbox-wrapper {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+#superbox-container {
+    position: relative;
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+#superbox {
+    margin: 0 auto;
+    padding: 0;
+}
+
+#superbox-container .loading {
+    margin: 0;
+    text-align: center;
+}
+
+/* IE7 */
+*:first-child + html #superbox-container {
+    position: absolute;
+    top: 50%;
+    display: block;
+    height: auto;
+}
+
+*:first-child + html #superbox {
+    position: relative;
+    top: -50%;
+    display: block;
+}
+
+/* IE6 - Thanks to Thickbox for IE expressions */
+* html #superbox-container {
+    position: absolute;
+    top: 50%;
+    display: block;
+    height: auto;
+}
+
+* html #superbox {
+    position: relative;
+    top: -50%;
+    display: block;
+}
+
+* html #superbox-overlay {
+    position: absolute;
+    height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight,  'px' : document.body.offsetHeight,  'px');
+}
+
+* html #superbox-wrapper {
+    position: absolute;
+    margin-top: expression(0 - parseInt(this.offsetHeight / 2),  (document.documentElement && document.documentElement.scrollTop || document.body.scrollTop),  'px');
+}
+
+/* Default Theme */
+#superbox-overlay {
+    background: #000;
+}
+
+#superbox-container .loading {
+    text-align: center;
+    font-size: 40px;
+    color: #fff;
+}
+
+#superbox {
+    padding: 10px;
+    background: #fff;
+}
+
+#superbox-innerbox {
+    padding: 10px 0;
+}
+
+#superbox.image {
+    text-align: center;
+}
+
+#superbox .close,
+#superbox .nextprev {
+    overflow: hidden;
+    margin: 0;
+}
+
+.datagrid_red table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.datagrid_red {
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    background: #fff;
+    overflow: hidden;
+    border: 1px solid #991821;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.datagrid_red table td, .datagrid_red table th {
+    padding: 3px 10px;
+}
+
+.datagrid_red table thead th {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #991821), color-stop(1, #80141C));
+    background: -moz-linear-gradient(center top, #991821 5%, #80141C 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#991821', endColorstr='#80141C');
+    background-color: #991821;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    border-left: 3px solid #B01C26;
+    border-bottom: 1px solid #000000;
+}
+
+.datagrid_red table thead th:first-child {
+    border: none;
+}
+
+.datagrid_red table tbody td {
+    color: #000000;
+    border-left: 3px solid #B3323B;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.datagrid_red table tbody .error td, .datagrid_red table tbody .throwable_error td {
+    background: #80141C;
+    color: #F8E1E2;
+}
+
+.datagrid_red table tbody .warning td {
+    background: #FFEBC8;
+    color: #ffbc47;
+}
+
+.datagrid_red table tbody .log td {
+    background: #ffe0de;
+    color: #000000;
+}
+
+.datagrid_red table tbody .debug td {
+    background: #CECECE;
+    color: #000000;
+}
+
+.datagrid_red table tbody td:first-child {
+    border-left: none;
+}
+
+.datagrid_red table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.datagrid_red table tfoot td div {
+    border-top: 1px solid #991821;
+    background: #F7CDCD;
+}
+
+.datagrid_red table tfoot td {
+    padding: 0;
+    font-size: 12px
+}
+
+.datagrid_red table tfoot td div {
+    padding: 2px;
+}
+
+.datagrid_red table tfoot td ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+}
+
+.datagrid_red table tfoot li {
+    display: inline;
+}
+
+.datagrid_red table tfoot li a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 1px;
+    color: #FFFFFF;
+    border: 1px solid #991821;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #991821), color-stop(1, #80141C));
+    background: -moz-linear-gradient(center top, #991821 5%, #80141C 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#991821', endColorstr='#80141C');
+    background-color: #991821;
+}
+
+.datagrid_red table tfoot ul.active, .datagrid_red table tfoot ul a:hover {
+    text-decoration: none;
+    border-color: #80141C;
+    color: #FFFFFF;
+    background: none;
+    background-color: #991821;
+}
+
+.datagrid_green table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.datagrid_green {
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    background: #fff;
+    overflow: hidden;
+    border: 1px solid #36752D;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.datagrid_green table td, .datagrid_green table th {
+    padding: 3px 10px;
+}
+
+.datagrid_green table thead th {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420));
+    background: -moz-linear-gradient(center top, #36752D 5%, #275420 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');
+    background-color: #36752D;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    border-left: 3px solid #36752D;
+    border-bottom: 1px solid #000000;
+}
+
+.datagrid_green table thead th:first-child {
+    border: none;
+}
+
+.datagrid_green table tbody td {
+    color: #000;
+    border-left: 3px solid #249C0C;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.datagrid_green table tbody .error td, .datagrid_green table tbody .throwable_error td {
+    background: #80141C;
+    color: #F8E1E2;
+}
+
+.datagrid_green table tbody .warning td {
+    background: #FFEBC8;
+    color: #FFA200;
+}
+
+.datagrid_green table tbody .log td {
+    background: #edffef;
+    color: #275420;
+}
+
+.datagrid_green table tbody .debug td {
+    background: #CECECE;
+    color: #000000;
+}
+
+.datagrid_green table tbody td:first-child {
+    border-left: none;
+}
+
+.datagrid_green table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.datagrid_green table tfoot td div {
+    border-top: 1px solid #36752D;
+    background: #DFFFDE;
+}
+
+.datagrid_green table tfoot td {
+    padding: 0;
+    font-size: 12px
+}
+
+.datagrid_green table tfoot td div {
+    padding: 2px;
+}
+
+.datagrid_green table tfoot td ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+}
+
+.datagrid_green table tfoot li {
+    display: inline;
+}
+
+.datagrid_green table tfoot li a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 1px;
+    color: #FFFFFF;
+    border: 1px solid #36752D;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420));
+    background: -moz-linear-gradient(center top, #36752D 5%, #275420 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');
+    background-color: #36752D;
+}
+
+.datagrid_green table tfoot ul.active, .datagrid_green table tfoot ul a:hover {
+    text-decoration: none;
+    border-color: #275420;
+    color: #FFFFFF;
+    background: none;
+    background-color: #36752D;
+}
+
+a {
+    font-family: arial, 'times new roman', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    color: #103711;
+    text-decoration: none;
+}
+
+pre b {
+    font-family: arial, 'times new roman', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #103711;
+    text-decoration: none;
+}
+
+.command {
+    font-family: arial, 'times new roman', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #103711;
+    text-decoration: none;
+}
+
+pre {
+    overflow-x: auto;
+    max-width: 1300px;
+}
+
+pre.desc_item {
+    overflow-x: auto;
+    max-width: 1300px;
+}
+
+.descTitle {
+    cursor: pointer;
+}
+
+pre {
+    font-family: arial, 'times new roman', sans-serif;
+    text-decoration: none;
+}
+
+.header {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #adadad), color-stop(1, #8b8b8b));
+    color: #ffffff;
+    background: -moz-linear-gradient(center top, #adadad 5%, #8b8b8b 100%);
+}
+
+.header:hover {
+    cursor: pointer;
+}
+
+.header:active {
+    background: #8b8b8b;
+    cursor: pointer;
+}
+
+tr.header.disable {
+    background: #adadad;
+    cursor: default;
+}
+
+tr.header.disable :hover {
+    background: #adadad;
+    cursor: default;
+}
+
+tr.empty {
+    display: none;
+}
+
+.header a {
+    font-family: arial, 'times new roman', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.header td pre {
+    font-family: arial, 'times new roman', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.header td .command {
+    font-family: arial, 'times new roman', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.header td .hidden_data {
+    display: none;
+    height: 18px;
+    overflow: hidden;
+}
+
+.header td pre.desc_item {
+    margin: 2px;
+    color: #003522;
+    font-size: 1.1em;
+}
+
+.datagrid_red table tbody tr.errorTD td:first-child {
+    background-image: url('http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Status-script-error-icon.png');
+    background-color: #7f0e16;
+    background-repeat: no-repeat;
+    background-position: 0px 2px;
+    color: #fbfbfb;
+    background-size: 50px 50px;
+}
+
+#menu {
+    margin-bottom: -2px;
+    position: absolute;
+    margin-top: -22px;
+}
+
+#menu .tab {
+    background-color: #0E1C7F;
+    border: 2px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 15px;
+    border-collapse: collapse;
+    text-align: center;
+    border-color: gray;
+    border-spacing: 2px;
+    border-bottom: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font: bold 12px/150% Arial, Helvetica, sans-serif;
+    display: inline;
+    padding: 0 4px 0 4px;
+}
+
+#menu .tab:hover {
+    background-color: #06065F;
+}
+
+#menu .tab:active {
+    background-color: #06113F;
+}
+
+#menu .tab.disable {
+    background-color: #aeaeae;
+    cursor: default;
+}
+
+.commandList {
+    font-family: arial, 'times new roman', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #991821;
+    text-decoration: none;
+}
+
+#result u li {
+    margin-left: -5px;
+    list-style-position: inside;
+    list-style-image: url(https://static.opensuse.org/hosts/build2.o.o/images/tools-report-bug.png);
+}
+
+#result u li a {
+    color: #FFF500;
+    text-shadow: 2px 2px 1px black, 0 0 3px black;
+    margin-left: -9px;
+}
+
+#result u li a:hover {
+    color: #FFA300;
+    text-shadow: 2px 2px 1px black, 0 0 3px black;
+    margin-left: -9px;
+}
+
+#result u li a:active {
+    color: #CF8707;
+    text-shadow: 2px 2px 1px black, 0 0 3px black;
+    margin-left: -9px;
+}
+
+#table {
+    margin-top: 20px;
+}

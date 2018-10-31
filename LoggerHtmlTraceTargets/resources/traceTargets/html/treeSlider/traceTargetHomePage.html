@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" >
+<html>
+<head>
+    <title> HTML Log File </title>
+    <link type="image/x-icon" rel="icon" href="icons/icon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="js/jquery_2_1_1_min.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/main_js.js"></script>
+    <script type="text/javascript" src="js/super_box.js"></script>
+    <script type="text/javascript" src="js/date.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <script type="text/javascript">
+        var isKeyUp = true;
+        $(function () {
+            $.superbox.settings = {
+                closeTxt: "Close",
+                loadTxt: "Loading...",
+                nextTxt: "Next",
+                prevTxt: "Previous"
+            };
+            $.registerCommand(showAllErrors, "showErrors");
+            $.registerCommand(showOnlyErrors, "showOnlyErrors");
+            $.registerCommand(showDebugInfo, "showDebugInfo");
+            $.registerCommand(showEmptyNodes, "showEmptyNodes");
+            $.registerCommand(useAccordion, "useAccordion");
+            $.registerCommand(showAll, "showAll");
+            $.registerCommand(changeIconSize, "screenScale");
+            $.registerCommand(changeSortMethod, "sortBy");
+            $('#btnOpenAllErrors').click(openAllErrors);
+            $('#btnDebugInfo').click(showDebugInfo);
+            $('#btnShowEmptyNodes').click(showEmptyNodes);
+            $('#btnUseAccordion').click(useAccordion);
+            $('#btnShowInfo').click(showInfo);
+            $('#btnMoveOnTop').click(moveOnTop);
+            $('#btnDebugInfo, #btnShowAllErrors, #btnShowOnlyErrors, #btnShowInfo, #btnShowEmptyNodes')
+                    .parent().hide();
+            if(!$.hasHash("showDebugInfo")){
+                $.removeDebugLogs(items);
+            }
+            if(!isReportFinished) {
+                $.recollectItems(items);
+                $.collapseItems(items);
+            }
+            draw();
+            sortDraw();
+            beautifyEmptyNodes();
+            hideNodesWhenItMoreThatTen();
+            showFirstNotEmptyNode();
+            $.superbox();
+            $.hashUtils();
+            $.superbox();
+            document.title = suiteName;
+            $("#title").html(suiteName);
+            unselectTabs();
+            changeIconSize();
+            $("body> .items> .header").css({"margin-top": "15px"});
+            $(document).keyup(function(e) {
+                isKeyUp = true;
+            });
+            $(document).keydown(function(e) {
+                if(!isKeyUp) return;
+                isKeyUp = false;
+                console.log(e.keyCode);
+                if(!e.ctrlKey && e.keyCode == 40) {
+                    showNextTag()
+                }
+                if(!e.ctrlKey && e.keyCode == 38) {
+                    showPrevTag()
+                }
+                if(!e.ctrlKey && e.keyCode == 39) {
+                    showInnerTag()
+                }
+                if(!e.ctrlKey && e.keyCode == 37) {
+                    showOuterTag()
+                }
+            });
+            if(queueToOpenHeader.length>0) {
+                progressBar.runProgressBar(queueToOpenHeader.length*Math.max(initialDuration, duration)*2);
+            }
+        });
+    </script>
+</head>
+<body style="font-family:Sans-Serif,Arial,serif;">
+    <div id="menu" class="none">
+        <div class="tab"><a id="btnShowAll" href="#showAll:true">show all</a></div>
+        <div class="tab"><a id="btnShowAllErrors" href="#showErrors:true">show errors</a></div>
+        <div class="tab"><a id="btnShowOnlyErrors" href="#showOnlyErrors:true">show only errors</a></div>
+        <div class="tab"><a id="btnDebugInfo" href="#showDebugInfo:true">show debug information</a></div>
+        <div class="tab"><a id="btnShowInfo">show info blocks</a></div>
+        <div id="btnMoveOnTop" class="tab">move on top</div>
+        <div class="tab"><a id="btnShowEmptyNodes" href="#showEmptyNodes:true">Show empty nodes</a></div>
+        <div class="tab"><a id="btnUseAccordion" href="#useAccordion:false">Stop use accordion</a></div>
+        <!--<div id="showOldReport" class="tab">show old report</div>-->
+        <div id="title" class="tab element" style="color: black; font-size: 18px; text-shadow: -1px 0 #cecece, 0 1px #cecece, 1px 0 #cecece, 0 -1px #cecece;">Empty title</div>
+        <div id="setScreenScaleTab" class="tab element">
+            <label for="setScreenScale"><!--choice images scale--></label>
+            <select id="setScreenScale" onchange="$.setValue('screenScale', $(this).find('option:selected')[0].text)">
+                <option value="75px">75px</option>
+                <option value="175px">175px</option>
+                <option value="300px">300px</option>
+                <option value="656px">656px</option>
+            </select>
+        </div>
+        <div id="sortItems" class="tab element">
+            <label for="chooseTreeSortMethod"><!--choice images scale--></label>
+            <select id="chooseTreeSortMethod" onchange="$.setValue('sortBy', $(this).find('option:selected')[0].value)">
+                <option value="date">date</option>
+                <option value="execution_time">execution time</option>
+                <option value="name">name</option>
+            </select>
+        </div>
+        <div id="progressBoxTab" class="tab element" style="display: none">
+            <div id="progressBox" style="margin-top: 5px; width: 100px; height: 15px; background-color: darkslategrey; display: inline-block;">
+                <div id="progressBar" style="width: 1px; height: 11px; margin: 2px; background-color: #94de97; display: inline-block; float: left"></div>
+            </div>
+        </div>
+    </div>
+</body>
