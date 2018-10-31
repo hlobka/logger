@@ -63,8 +63,7 @@ public class Logger {
 		if (!LogType.FORMAT_LOG.isEnable()) {
 			return;
 		}
-		String command = generateLogCommandName();
-		logF(command, format.get(), args);
+		logF(format.get(), args);
 	}
 
 	/**
@@ -72,7 +71,6 @@ public class Logger {
 	 * Returns a formatted string using the specified format string and
 	 * arguments.
 	 *
-	 * @param command caption log type
 	 * @param format  A <a href="../util/Formatter.html#syntax">format string</a>
 	 * @param args    Arguments referenced by the format specifiers in the format
 	 *                string.  If there are more arguments than format specifiers, the
@@ -84,7 +82,8 @@ public class Logger {
 	 *                {@code null} argument depends on the <a
 	 *                href="../util/Formatter.html#syntax">conversion</a>.
 	 */
-	public static void logF(String command, String format, Object... args) {
+	public static void logF(String format, Object... args) {
+		String command = generateLogCommandName();
 		if (!LogType.FORMAT_LOG.isEnable()) {
 			return;
 		}
