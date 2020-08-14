@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.loka.autotesting</groupId>
+        <groupId>com.github.hlobka.autotesting</groupId>
         <artifactId>LoggerParent</artifactId>
         <version>1.0.2-SNAPSHOT</version>
     </parent>
@@ -12,7 +12,7 @@
     <version>1.0.2-SNAPSHOT</version>
     <dependencies>
         <dependency>
-            <groupId>com.loka.autotesting</groupId>
+            <groupId>com.github.hlobka.autotesting</groupId>
             <artifactId>Logger</artifactId>
             <version>1.0.2-SNAPSHOT</version>
         </dependency>
@@ -73,7 +73,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
+                    <version>3.8.0</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>

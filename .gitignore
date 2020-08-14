@@ -1,0 +1,10 @@
+.idea
+#Logger/target
+*.iml
+/.settings/
+/*.project
+/*.classpath
+/reports/
+#/AssertionLogger/target/
+#/LoggerHtmlTraceTargets/target/
+target/
