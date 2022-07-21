@@ -6,7 +6,6 @@ import com.loka.autotesting.logger.traceTargets.reports.composer.ReportComposer;
 import com.loka.autotesting.logger.traceTargets.reports.composer.actions.ObjectToStringConverter;
 import com.loka.autotesting.logger.traceTargets.reports.composer.actions.itemAdder.TreeSliderReportItemAdder;
 import com.loka.autotesting.logger.traceTargets.reports.composer.actions.starter.TreeSliderReportStarter;
-import javafx.util.Builder;
 
 import java.util.ArrayList;
 import java.util.List;

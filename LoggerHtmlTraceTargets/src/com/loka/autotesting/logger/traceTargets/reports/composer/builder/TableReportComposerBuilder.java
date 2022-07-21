@@ -3,7 +3,6 @@ package com.loka.autotesting.logger.traceTargets.reports.composer.builder;
 import com.loka.autotesting.logger.traceTargets.reports.composer.ReportComposer;
 import com.loka.autotesting.logger.traceTargets.reports.composer.actions.itemAdder.TableReportItemAdder;
 import com.loka.autotesting.logger.traceTargets.reports.composer.actions.starter.TableReportStarter;
-import javafx.util.Builder;
 
 public class TableReportComposerBuilder implements Builder<ReportComposer> {
 	protected boolean openReportAfterDestroy = false;

@@ -5,7 +5,6 @@ import com.loka.autotesting.logger.traceTargets.reports.composer.ReportComposer;
 import com.loka.autotesting.logger.traceTargets.reports.composer.actions.ObjectToStringConverter;
 import com.loka.autotesting.logger.traceTargets.reports.composer.actions.itemAdder.SliderReportItemAdder;
 import com.loka.autotesting.logger.traceTargets.reports.composer.actions.starter.SliderReportStarter;
-import javafx.util.Builder;
 
 public final class SliderReportComposerBuilder implements Builder<ReportComposer> {
 	protected Boolean openReportAfterDestroy = false;
